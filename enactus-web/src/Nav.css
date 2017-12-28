@@ -1,0 +1,10 @@
+.ul-style {
+    list-style-type: none;
+    float: left;
+}
+li {
+    padding-bottom: 20px;
+}
+.nav-style {
+    color: grey;
+}
