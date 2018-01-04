@@ -3,7 +3,10 @@
     float: left;
 }
 li {
-    padding-bottom: 20px;
+    padding-bottom: 15vh;
+}
+li:first-child {
+    padding-top: 15vh;
 }
 .nav-style {
     color: grey;

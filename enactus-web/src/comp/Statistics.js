@@ -8,7 +8,9 @@ class Statistics extends Component {
       
     return (
         <div>
-        <p>Statistics</p>
+        <header className="App-header">
+          <h1 className="App-title">Statistics</h1>
+        </header>
       </div>
     );
   }

@@ -2,8 +2,11 @@
   text-align: center;
     padding:20px;
     background-color: gold;
-    width: 60%;
-    margin: 0 auto;
+    width: 60vw;
+    left: 20vw;
+    height: 80vh;
+    position: absolute;
+    top: 5vh;
 }
 
 

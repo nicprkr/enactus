@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './css/Nav.css';
+import './css/Home.css';
 
 class Home extends Component {
     constructor(props){
@@ -14,7 +14,7 @@ class Home extends Component {
         </header>
         <form className="Hours-form">
         
-        <select name="project" placeholder="Select your project...">
+        <select name="project" placeholder="Select your project..." autofocus className="projectInp">
             <option value="Project" disabled="disabled">Select your project</option>
             <option value="marketing">marketing</option>
             <option value="teaching">teaching</option>
@@ -22,10 +22,10 @@ class Home extends Component {
         </select>
         
         <br/><br/>
-            <input name="hours" type="number" min="0" max="8" placeholder="hours" />
-            <input name="mins" type="number" min="0" max="59" placeholder="minutes" />
+            <input name="hours" type="number" min="0" max="8" placeholder="hours" className="timeInp" />
+            <input name="mins" type="number" min="0" max="59" placeholder="minutes" className="timeInp" />
         <br/><br/>
-            <button>Add</button>
+            <button className="button-dark">Add</button>
         </form>
       </div>
     );

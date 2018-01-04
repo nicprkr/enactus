@@ -4,8 +4,8 @@ import Nav from './comp/Nav.js';
 import Home from './comp/Home.js';
 import Profile from './comp/Profile.js';
 import Statistics from './comp/Statistics';
-import Users from './comp/Users';
-import Projects from './comp/Projects';
+//import Users from './comp/Users';
+//import Projects from './comp/Projects';
 import Login from './comp/Login';
 
 class App extends Component {
@@ -14,7 +14,9 @@ class App extends Component {
         
         this.state = {
             page:0,
-            loggedIn:false
+            //change to false to see login page
+            loggedIn:true
+            
         }
 this.changePage = this.changePage.bind(this);
 this.login = this.login.bind(this);
@@ -56,7 +58,7 @@ login(){
         page = (
         <Statistics />
         )
-    } else if (this.state.page === 3){
+    } /*else if (this.state.page === 3){
         page = (
         <Users />
         )
@@ -65,7 +67,7 @@ login(){
         page = (
         <Projects />
         )
-    } else if (this.state.page ===0) {
+    } */ else if (this.state.page ===0) {
         page = (
         <Home />
         )

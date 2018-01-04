@@ -35,8 +35,8 @@ goToProjects(){
                 <li onClick={this.goToHome}>Home</li>
                 <li onClick={this.goToProfile}>Profile</li>
                 <li onClick={this.goToStats}>Statistics</li>
-                <li onClick={this.goToUsers}>Users</li>
-                <li onClick={this.goToProjects}>Projects</li>
+            {    /* <li onClick={this.goToUsers}>Users</li> 
+               <li onClick={this.goToProjects}>Projects</li> */ }
             </ul>
         </div>
     );
