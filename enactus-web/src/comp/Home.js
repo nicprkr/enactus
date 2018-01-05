@@ -5,6 +5,13 @@ class Home extends Component {
     constructor(props){
         super(props);
     }
+    
+componentWillMount(){
+    this.setState({
+        msg:''
+    })
+}
+
   render() {
       
     return (
@@ -25,7 +32,10 @@ class Home extends Component {
             <input name="hours" type="number" min="0" max="8" placeholder="hours" className="timeInp" />
             <input name="mins" type="number" min="0" max="59" placeholder="minutes" className="timeInp" />
         <br/><br/>
-            <button className="button-dark">Add</button>
+            <p>{this.state.msg}</p>
+            <button 
+                className="button-dark" 
+                onClick = {()=>this.setState({ msg:"Hours logged successfully!" })}>Add</button>
         </form>
       </div>
     );

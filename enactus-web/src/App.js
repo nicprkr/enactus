@@ -15,7 +15,7 @@ class App extends Component {
         this.state = {
             page:0,
             //change to false to see login page
-            loggedIn:true
+            loggedIn:false
             
         }
 this.changePage = this.changePage.bind(this);
