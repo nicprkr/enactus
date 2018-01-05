@@ -36,6 +36,7 @@ login(){
         if(obj.pass === '123'){
             //if email and password are true, login
             this.props.login(true);
+            this.props.userInfo(obj);
         } else {
             this.setState({
                 passErr: "Incorrect password"

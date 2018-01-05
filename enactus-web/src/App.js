@@ -15,11 +15,13 @@ class App extends Component {
         this.state = {
             page:0,
             //change to false to see login page
-            loggedIn:false
+            loggedIn:false,
+            userInfo:[]
             
         }
 this.changePage = this.changePage.bind(this);
 this.login = this.login.bind(this);
+this.userInfo = this.userInfo.bind(this);
     }    
 
 changePage(num){
@@ -33,6 +35,12 @@ login(){
     });
     console.log(this.state.loggedIn);
 }
+userInfo(data){
+    this.setState({
+        userEmail:data.email,
+    });
+    console.log(data.email);
+}
   render() {
     var page = null;
     var nav = false;
@@ -41,6 +49,7 @@ login(){
     
         <Login 
             login = {this.login}
+            userInfo = {this.userInfo}
             />
         )
     } else if (this.state.loggedIn === true){
