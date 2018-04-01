@@ -32,21 +32,7 @@ login(){
         email:this.state.email,
         pass:this.state.pass
     };
-    if(obj.email === 'erin@bcit.ca'){
-        if(obj.pass === '123'){
-            //if email and password are true, login
-            this.props.login(true);
-            this.props.userInfo(obj);
-        } else {
-            this.setState({
-                passErr: "Incorrect password"
-            });
-        }
-    } else {
-        this.setState({
-            emailErr: "Incorrect email!"
-        });
-    }
+    this.props.login(obj);
 }
     
   render() {
@@ -71,14 +57,11 @@ login(){
       } else if (this.state.login === 0){
           signin = (
               <div>
-                  <form>
+        
             <input type="text" placeholder="Email Address" onChange={this.loginEmail}/><br/>
-              <p>{this.state.emailErr}</p>
             <input type="password" placeholder="Password" onChange={this.loginPass}/>
-              <p>{this.state.passErr}</p>
         <br/>
         <button onClick={this.login}>Go</button>
-        </form>
         <br/><br/>
         <p>Don't have an account? <span style={{color:"grey"}} onClick={()=> {this.setState({ login:1 })}}>Sign up!</span></p>
               </div>
