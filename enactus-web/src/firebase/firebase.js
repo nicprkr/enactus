@@ -14,8 +14,18 @@ if (!firebase.apps.length){
 }
 const db = firebase.database();
 const auth = firebase.auth();
+var currentUser = ' ';
+
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    currentUser = user.email;
+  } else {
+    // No user is signed in.
+  }
+});
 
 export {
     db,
     auth,
+    currentUser as user
 };

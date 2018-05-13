@@ -1,44 +1,81 @@
 import React, { Component } from 'react';
 
 import withAuthorization from './withAuthorization';
-import { db } from '../firebase';
+import { db, auth, user } from '../firebase/firebase';
 
-class HomePage extends Component {
+const HomePage = () =>
+<div>
+    <h1>Hours</h1>
+    <HoursForm />
+    </div>
+
+const byPropKey = (propertyName, value) => () => ({
+    [propertyName]: value,
+});
+
+const INITIAL_STATE = {
+    project: '',
+    hours: '',
+    minutes: ''
+};
+
+class HoursForm extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      users: null,
-    };
+    this.state = { ...INITIAL_STATE };
   }
+    
 
   componentDidMount() {
-    db.onceGetUsers().then(snapshot =>
-      this.setState(() => ({ users: snapshot.val() }))
-    );
+      this.setState({
+          user:user
+      })
   }
+    
+    onSubmit = (event) => {
+        const {
+            project,
+            hours,
+            minutes,
+            user
+        } = this.state;
+        console.log(this.state);
+        this.setState({ ...INITIAL_STATE });
+        
+        event.preventDefault();
+    }
 
   render() {
-      const { users } = this.state;
+      const { project,
+            hours,
+            minutes,
+            user,
+            error,
+            } = this.state;
+      
+      const isInvalid = 
+            project === '' || hours === '' || minutes === '';
+      
     return (
-      <div>
-        <h1>Home</h1>
-        <p>The Home Page is accessible by every signed in user.</p>
-        
-        { !!users && <UserList users={users} /> }
-      </div>
+        <form onSubmit={this.onSubmit}>
+        <select name="project" placeholder="Select your project..." className="projectInp" onChange={event => this.setState(byPropKey('project', event.target.value))}>
+            <option value="marketing">marketing</option>
+            <option value="teaching">teaching</option>
+            <option value="meetings">meetings</option>
+        </select>
+        <input name="hours" type="number" min="0" max="8" placeholder="Hours" className="timeInp" onChange={event => this.setState(byPropKey('hours', event.target.value))} />
+        <input name="mins" type="number" min="0" max="59" placeholder="minutes" className="timeInp" onChange={event => this.setState(byPropKey('minutes', event.target.value))} />
+    <button
+        disabled={isInvalid}
+        type="submit"
+        >Add</button>
+        { error && <p>{error.message}</p> }
+         </form>
     );
   }
 }
-const UserList = ({ users }) =>
-  <div>
-    <h2>List of Usernames of Users</h2>
-    <p>(Saved on Sign Up in Firebase Database)</p>
 
-    {Object.keys(users).map(key =>
-      <div key={key}>{users[key].username}</div>
-    )}
-  </div>
 
 const authCondition = (authUser) => !!authUser;
 
