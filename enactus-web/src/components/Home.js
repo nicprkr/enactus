@@ -29,7 +29,8 @@ class HoursForm extends Component {
 
   componentDidMount() {
       this.setState({
-          user:user
+          user:user,
+          success:'',
       })
   }
     
@@ -41,7 +42,7 @@ class HoursForm extends Component {
             user
         } = this.state;
         console.log(this.state);
-        this.setState({ ...INITIAL_STATE });
+        this.setState({ ...INITIAL_STATE, success:'Hours added!' });
         
         event.preventDefault();
     }
@@ -51,7 +52,7 @@ class HoursForm extends Component {
             hours,
             minutes,
             user,
-            error,
+            error
             } = this.state;
       
       const isInvalid = 
@@ -71,6 +72,7 @@ class HoursForm extends Component {
         type="submit"
         >Add</button>
         { error && <p>{error.message}</p> }
+        {this.state.success}
          </form>
     );
   }
